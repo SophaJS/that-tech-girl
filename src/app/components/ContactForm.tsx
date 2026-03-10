@@ -56,7 +56,7 @@ export function ContactForm() {
         <div className="max-w-2xl mx-auto px-4 text-center">
           <div className="border border-[#8b0000] bg-[#8b0000]/5 p-12">
             <div className="w-12 h-12 bg-[#8b0000] flex items-center justify-center mx-auto mb-6">
-              <span className="text-white font-mono text-xl">✕</span>
+              <span className="text-white font-mono text-xl">✓</span>
             </div>
             <div className="text-[#cc0000] font-mono text-xs uppercase tracking-widest mb-4">
               CONTRACT ACCEPTED — OPERATOR ASSIGNED
