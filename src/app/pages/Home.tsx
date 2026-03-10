@@ -8,7 +8,7 @@ const HERO_IMAGE =
 
 export default function Home() {
   useEffect(() => {
-    document.title = "That Tech Girl | Web Developer & Digital Operative";
+    document.title = "Hit! | Web Developer & Digital Operative";
   }, []);
 
   return (

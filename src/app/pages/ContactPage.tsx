@@ -3,7 +3,7 @@ import { ContactForm } from "../components/ContactForm";
 
 export default function ContactPage() {
   useEffect(() => {
-    document.title = "Contact | Initiate Contract";
+    document.title = "Initiate Contract | Hit!";
   }, []);
 
   return <ContactForm />;

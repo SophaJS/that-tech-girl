@@ -3,7 +3,7 @@ import { Services } from "../components/Services";
 
 export default function ServicesPage() {
   useEffect(() => {
-    document.title = "Services | That Tech Girl";
+    document.title = "Services | Hit!";
   }, []);
 
   return <Services />;
