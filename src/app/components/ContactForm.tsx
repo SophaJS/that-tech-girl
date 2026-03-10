@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Send, AlertTriangle } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
   const [form, setForm] = useState({
     clientName: "",
     targetUrl: "",
@@ -15,9 +18,33 @@ export function ContactForm() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError("");
+
+    try {
+      // Add timestamp for confirmation code
+      const templateParams = {
+        ...form,
+        timestamp: new Date().toISOString(),
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Failed to send email:", err);
+      setError("Transmission failed. Please try again or contact directly.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputClass =
@@ -147,12 +174,19 @@ export function ContactForm() {
               />
             </div>
 
+            {error && (
+              <div className="bg-[#8b0000]/10 border border-[#8b0000]/30 p-4 text-[#cc0000] font-mono text-xs">
+                {error}
+              </div>
+            )}
+
             <button
               type="submit"
-              className="w-full bg-[#8b0000] hover:bg-[#a00000] text-white font-mono text-sm py-4 uppercase tracking-widest transition-colors flex items-center justify-center gap-3 border border-[#cc0000]/50"
+              disabled={sending}
+              className="w-full bg-[#8b0000] hover:bg-[#a00000] disabled:bg-[#4a0000] disabled:cursor-not-allowed text-white font-mono text-sm py-4 uppercase tracking-widest transition-colors flex items-center justify-center gap-3 border border-[#cc0000]/50"
             >
               <Send size={13} />
-              SUBMIT CONTRACT — INITIATE OPERATION
+              {sending ? "TRANSMITTING..." : "SUBMIT CONTRACT — INITIATE OPERATION"}
             </button>
 
             <p className="text-center text-gray-700 font-mono text-xs">
