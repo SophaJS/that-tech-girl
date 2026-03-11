@@ -9,7 +9,7 @@ export function Footer() {
                 <span className="text-white font-mono text-xs">✕</span>
               </div>
               <span className="text-white font-mono text-sm uppercase tracking-widest">
-                RentAHitman<span className="text-[#8b0000]">.com</span>
+                RentAHitman<span className="text-[#8b0000]">.org</span>
               </span>
             </div>
             <div className="space-y-1.5">
@@ -20,7 +20,7 @@ export function Footer() {
 
         <div className="border-t border-[#111] pt-6 text-center">
           <p className="text-gray-700 font-mono text-xs">
-            © 2024–2026 RentAHitman.com. One operator. All contracts fulfilled.
+            © 2024–2026 RentAHitman.org. One operator. All contracts fulfilled.
           </p>
         </div>
       </div>

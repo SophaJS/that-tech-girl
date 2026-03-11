@@ -19,7 +19,7 @@ export function Navbar() {
           </div>
           <div>
             <div className="text-white tracking-widest text-sm font-mono uppercase">
-              RentAHitman<span className="text-[#8b0000]">.com</span>
+              RentAHitman<span className="text-[#8b0000]">.org</span>
             </div>
             <div className="text-gray-600 text-xs font-mono tracking-wider">
               Clean work. No loose ends.
